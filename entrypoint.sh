@@ -28,9 +28,10 @@ echo "JVM_ARGS=${JVM_ARGS}"
 echo "jmeter args=$@"
 
 # Keep entrypoint simple: we must pass the standard JMeter arguments
-EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
-echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
-jmeter ${EXTRA_ARGS} $@
+#EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
+#echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
+#jmeter ${EXTRA_ARGS} $@
+jmeter $@
 
 echo "END Running Jmeter on `date`"
 
