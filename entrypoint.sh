@@ -32,7 +32,7 @@ TEST_PLAN=test-plan.jmx
 echo "JVM_ARGS=${JVM_ARGS}"
 #echo "JMeter_Script=wget ${JMETER_GIT_REPO}"
 echo "JMeter_Results=wget ${JMeter_JTLfiles}"
-echo "jmeter args=-n -t ${JMETER_Script} -l ${JMeter_Results}"
+echo "jmeter args=$-n -t $(TEST_DIR)/${TEST_PLAN} -l $(TEST_DIR)/test-plan.jtl"
 
 # Keep entrypoint simple: we must pass the standard JMeter arguments
 #EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
