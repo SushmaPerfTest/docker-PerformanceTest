@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Inspired from https://github.com/hhcordero/docker-jmeter-client
 # Basically runs jmeter, assuming the PATH is set to point to JMeter bin-dir (see Dockerfile)
 #
@@ -31,7 +31,6 @@ echo "jmeter args=$@"
 EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
 echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
 jmeter ${EXTRA_ARGS} $@
-
 
 echo "END Running Jmeter on `date`"
 
