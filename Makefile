@@ -13,9 +13,9 @@ TEST_DIR = tests/$(TEST)
 #REPORT_DIR=tests/trivial/report
 REPORT_DIR=$(TEST_DIR)/report
 
-#all: clean run report
+all: clean run report
 
-#clean: @rm -rf $(REPORT_DIR) $(TEST_DIR)/test-plan.jtl $(TEST_DIR)/jmeter.log
+clean: @rm -rf $(REPORT_DIR) $(TEST_DIR)/test-plan.jtl $(TEST_DIR)/jmeter.log
 
 run:
 	@mkdir -p $(REPORT_DIR)
