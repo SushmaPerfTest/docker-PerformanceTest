@@ -26,8 +26,8 @@ freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
 export JVM_ARGS="-Xmn${JVM_XMN}m -Xms${JVM_XMS}m -Xmx${JVM_XMX}m"
 
 echo "START Running Jmeter on `date`"
-TEST_DIR=tests/trivial
-TEST_PLAN=test-plan.jmx
+echo "TEST_DIR=tests/trivial"
+echo "TEST_PLAN=test-plan.jmx"
 #REPORT_DIR=${TEST_DIR}/report
 echo "JVM_ARGS=${JVM_ARGS}"
 #echo "JMeter_Script=wget ${JMETER_GIT_REPO}"
