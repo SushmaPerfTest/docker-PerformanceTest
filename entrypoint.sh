@@ -13,8 +13,6 @@ then
     done;
 fi
 
-
-
 # Execute JMeter command
 set -e
 freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
@@ -26,18 +24,13 @@ freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
 export JVM_ARGS="-Xmn${JVM_XMN}m -Xms${JVM_XMS}m -Xmx${JVM_XMX}m"
 
 echo "START Running Jmeter on `date`"
-echo "TEST_DIR=tests/trivial"
-echo "TEST_PLAN=test-plan.jmx"
-#REPORT_DIR=${TEST_DIR}/report
 echo "JVM_ARGS=${JVM_ARGS}"
-#echo "JMeter_Script=wget ${JMETER_GIT_REPO}"
-#echo "JMeter_Results=wget ${JMeter_JTLfiles}"
-echo "jmeter args=$-n -t $(TEST_DIR)/${TEST_PLAN} -l $(TEST_DIR)/test-plan.jtl"
+echo "jmeter args=$@"
 
 # Keep entrypoint simple: we must pass the standard JMeter arguments
-#EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
-#echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
-jmeter $-n -t $(TEST_DIR)/${TEST_PLAN} -l $(TEST_DIR)/test-plan.jtl
+EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
+echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
+jmeter ${EXTRA_ARGS} $@
 
 echo "END Running Jmeter on `date`"
 
