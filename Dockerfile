@@ -38,15 +38,6 @@ COPY entrypoint.sh /
 
 WORKDIR	${JMETER_HOME}
 
-#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/runJmeter.sh"]
 
 
-RUN wget ${JMETER_ENV_SH} \
-	&& mkdir -p /Sushma/scripts \
-	&& echo Downloaded entrypoint file \
-	&& mv entrypoint.sh /Sushma/scripts \
-	&& echo entrypoint file moved \
-	&& chmod 777 -R /Sushma/scripts \
-	&& echo chmod permissions added 
-	
-ENTRYPOINT ["/Sushma/scripts/entrypoint.sh"]
