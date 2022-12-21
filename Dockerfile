@@ -8,6 +8,7 @@ ARG JMETER_VERSION="5.2.1"
 ENV JMETER_HOME /opt/jmeter
 ENV	JMETER_BIN	${JMETER_HOME}/bin
 ENV	JMETER_DOWNLOAD_URL  https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
+ENV JMETER_ENV_SH https://github.com/SushmaPerfTest/docker-PerformanceTest/blob/main/entrypoint.sh
 
 # Install extra packages
 # Set TimeZone, See: https://github.com/gliderlabs/docker-alpine/issues/136#issuecomment-612751142
@@ -37,4 +38,15 @@ COPY entrypoint.sh /
 
 WORKDIR	${JMETER_HOME}
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
+
+
+RUN wget ${JMETER_ENV_SH} \
+	&& mkdir -p /Sushma/scripts \
+	&& echo Downloaded entrypoint file \
+	&& mv entrypoint.sh /Sushma/scripts \
+	&& echo entrypoint file moved \
+	&& chmod 777 -R /Sushma/scripts \
+	&& echo chmod permissions added 
+	
+ENTRYPOINT ["/Sushma/scripts/entrypoint.sh"]
