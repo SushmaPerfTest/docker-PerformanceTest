@@ -8,14 +8,13 @@ JVM_ARGS ?= "-Xms1g -Xmx1g -XX:MaxMetaspaceSize=256m"
 TARGET_PATH ?= "/index.html"
 TARGET_KEYWORD ?= "domain"
 
-#TEST_DIR=tests/trivial
 TEST_DIR = tests/$(TEST)
-#REPORT_DIR=tests/trivial/report
 REPORT_DIR=$(TEST_DIR)/report
 
 all: clean run report
 
-clean: @rm -rf $(REPORT_DIR) $(TEST_DIR)/test-plan.jtl $(TEST_DIR)/jmeter.log
+clean:
+	@rm -rf $(REPORT_DIR) $(TEST_DIR)/test-plan.jtl $(TEST_DIR)/jmeter.log
 
 run:
 	@mkdir -p $(REPORT_DIR)
