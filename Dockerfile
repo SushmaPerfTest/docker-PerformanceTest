@@ -38,6 +38,6 @@ COPY entrypoint.sh /
 
 WORKDIR	${JMETER_HOME}
 
-ENTRYPOINT ["/runJmeter.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 
